@@ -10,3 +10,12 @@ class Solution:
                 return [i, complement[value]]
             # set complement value as key and index as value
             complement[target - value] = i
+
+        previousMap = {}
+
+        for index in range(len(nums)):
+            complement  = target - nums[index]
+            if complement in previousMap:
+                return [previousMap[complement], index]
+            previousMap[nums[index]] = index
+            
