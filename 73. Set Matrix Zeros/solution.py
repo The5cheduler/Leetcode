@@ -1,38 +1,36 @@
-from typing import List
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         """
         Do not return anything, modify matrix in-place instead.
         """
         m,n = len(matrix), len(matrix[0])
-        col_zero, row_zero = False, False    
-        #check if first column is zero
+        # row = matrix[..][0]
+        # col = matrix[0][..]
+
+        columnZero = 1
+
+        # traverse through the array and check if there area any zeros and mark respective column and row to zero
         for i in range(m):
-            if matrix[i][0] == 0:
-                col_zero = True
-                break
-        #check if first row is zero
-        for j in range(n):
-            if matrix[0][j] == 0:
-                row_zero = True
-                break
-
-        for i in range(1, m):
-            for j in range(1, n):
+            for j in range(n):
                 if matrix[i][j] == 0:
+                    # mark i th row to zero
                     matrix[i][0] = 0
-                    matrix[0][j] = 0
+                    # mark jth row to zero
+                    if j != 0:
+                        matrix[0][j] = 0
+                    else:
+                        columnZero = 0
 
-        for i in range(1, m):
-            for j in range(1, n):
-                if matrix[i][0] == 0 or matrix[0][j] == 0:
-                    matrix[i][j] = 0
+        for i in range(1,m):
+            for j in range(1,n):
+                if matrix[i][j] != 0:
+                    if matrix[0][j] == 0 or matrix[i][0] == 0:
+                        matrix[i][j] = 0
 
-        if row_zero:
+        if matrix[0][0] == 0:
             for j in range(n):
                 matrix[0][j] = 0
 
-        if col_zero:
+        if columnZero == 0:
             for i in range(m):
-                matrix[i][0] = 0 
-
+                matrix[i][0] = 0
