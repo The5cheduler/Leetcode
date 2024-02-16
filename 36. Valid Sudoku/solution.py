@@ -1,4 +1,6 @@
 import collections
+from typing import List
+
 class Solution:
     def isValidSudoku(self, board: List[List[str]]) ->  bool:
         # create hash set to stores the value of rows, columns and squares
