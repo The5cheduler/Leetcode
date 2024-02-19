@@ -22,7 +22,6 @@ class Solution:
         return stack.pop()
 
         # Approach 2
-    
         for token in tokens:
             if token == "+":
                 stack[-1] = int(add(stack[-2], stack.pop()))
