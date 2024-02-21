@@ -26,7 +26,7 @@ Here are the steps for the solution approach:
 3. If the target value is not found after the loop, return `False`.
 
 ## Complexity Analysis:
-- Time Complexity: $$O(log(m + n))$$, where m is the number of rows and n is the number of columns in the matrix.
+- Time Complexity: $O(log(m + n))$, where m is the number of rows and n is the number of columns in the matrix.
 - Space Complexity: O(1)
 
 ## Example:
