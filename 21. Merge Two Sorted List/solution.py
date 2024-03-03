@@ -1,3 +1,5 @@
+from typing import *
+
 # Definiation for Singly Linked List
 class ListNode:
   def __init__(self, val = 0, next = None):
@@ -16,9 +18,9 @@ class Solution:
       if list1.val > list2.val:
         # If greater update the tail pointer to list2
         tail.next = list2
-        # update the pointer for current node for list1 to the next  
+        # update the pointer for current node for list1 to the next
         list2 = list2.next
-      
+
       # Else list2's value is greater than list1's value
       else:
         # Update the tail pointer to list1's Node
@@ -37,5 +39,5 @@ class Solution:
 
     # return the head node which is dummy.next
     return dummy.next
-    
-        
+
+
