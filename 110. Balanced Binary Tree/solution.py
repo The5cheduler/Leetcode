@@ -7,7 +7,13 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def __init__(self, root: Optional[TreeNode]) -> bool:
+    def isBalancedTree(self, root: Optional[TreeNode]) -> bool:
+        """
+        Checks if a binary tree is balanced.
+
+        Time complexity: O(n), where n is the number of nodes in the tree.
+        Space complexity: O(h), where h is the height of the tree (recursive call stack).
+        """
         # Define a helper function for depth-first search
         def depth_first_search(root):
             # Base case: if root is None, return [True, 0]
