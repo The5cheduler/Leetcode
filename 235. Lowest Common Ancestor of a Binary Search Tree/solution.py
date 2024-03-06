@@ -8,12 +8,12 @@ class TreeNode:
 
 class Solution:
     def lowestCommonAncestor(self, root: Optional[TreeNode], p: Optional[TreeNode], q: Optional[TreeNode]) -> Optional[TreeNode]:
-        current = root
+        current = root  # Initialize a variable 'current' with the root node
 
-        while root:
-            if p.val > current.val and q.val > current.val:
-                current = current.right
-            elif p.val < current.val and q.val < current.val:
-                current = current.left
+        while root:  # Loop until 'root' is not None
+            if p.val > current.val and q.val > current.val:  # If both p and q are greater than current node's value
+                current = current.right  # Move to the right child
+            elif p.val < current.val and q.val < current.val:  # If both p and q are less than current node's value
+                current = current.left  # Move to the left child
             else:
-                return current
+                return current  # If neither of the above conditions are met, current node is the lowest common ancestor
