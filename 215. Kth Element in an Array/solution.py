@@ -4,27 +4,24 @@ from typing import List
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
-        # Choose a random pivot from the list
+        # Choose a random pivot element
         pivot = random.choice(nums)
 
-        # Partition the list into three parts
-        numbers_greater_than_pivot = [x for x in nums if x > pivot]
-        numbers_equal_to_pivot = [x for x in nums if x == pivot]
-        numbers_less_than_pivot = [x for x in nums if x < pivot]
+        # Partition the array into three parts: elements less than pivot, elements equal to pivot, elements greater than pivot
+        left_half = [x for x in nums if x < pivot]
+        middle = [x for x in nums if x == pivot]
+        right_half = [x for x in nums if x > pivot]
 
-        # Calculate the lengths of the parts
-        len_greater = len(numbers_greater_than_pivot)
-        len_equal = len(numbers_equal_to_pivot)
+        # Calculate the lengths of the right_half and middle arrays
+        len_right = len(right_half)
+        len_middle = len(middle)
 
-        # If k is less than or equal to the length of the left part,
-        # the kth largest number is in the left part
-        if k <= len_greater:
-            return self.findKthLargest(numbers_greater_than_pivot, k)
-        # If k is greater than the length of the left part but less than or equal to
-        # the sum of the lengths of the left and middle parts,
-        # the kth largest number is equal to the pivot
-        elif k <= len_greater + len_equal:
+        # Recursively find the kth largest element in the right_half or left_half
+        if k <= len_right:
+            return self.findKthLargest(right_half, k)
+        # If k is between len_right and len_right + len_middle, then the pivot is the kth largest element
+        elif k <= len_right + len_middle:
             return pivot
-        # Otherwise, the kth largest number is in the right part
-        else:
-            return self.findKthLargest(numbers_less_than_pivot, k - len_greater - len_equal)
+        # Recursively find the kth largest element in the left_half
+        else: 
+            return self.findKthLargest(left_half, k - len_right - len_middle)
